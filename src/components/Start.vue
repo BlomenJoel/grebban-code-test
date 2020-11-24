@@ -60,7 +60,7 @@
     },
     data() {
       return {
-        pieces: createPieces(9),
+        pieces: shuffle(createPieces(9)),
         columns: 3,
         rows: 3,
         picked: undefined,
