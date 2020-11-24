@@ -33,22 +33,30 @@ export const checkWin = (pieces) => {
 };
 
 export const allowedMove = (index, picked, rows, columns) => {
+  console.log(
+    "empty space is at",
+    index,
+    "and we want to move it to",
+    picked.index
+  );
   const { counter, row, column } = getCurrentColumnRow(picked, rows, columns);
   let allowedMoves = [];
+  console.log("empty space is at column", column, "and row", row);
   allowedMoves = getAllowedMove(counter, row, rows, columns);
   allowedMoves = allowedMoves.concat(
     getAllowedMove(counter, column, columns, 1)
   );
+  console.log("allowed moves are", allowedMoves);
   return allowedMoves.includes(index);
 };
 
 export const getCurrentColumnRow = (picked, rows, columns) => {
   let column;
   let row;
-  let counter = 1;
+  let counter = 0;
 
-  for (row = 1; row <= rows; row++) {
-    for (column = 1; column <= columns; column++) {
+  for (row = 0; row < rows; row++) {
+    for (column = 0; column < columns; column++) {
       if (picked.index === counter) {
         return { counter, row, column };
       }
@@ -60,7 +68,7 @@ export const getCurrentColumnRow = (picked, rows, columns) => {
 export const getAllowedMove = (counter, currentAxis, totalAxis, adjuster) => {
   let allowedMoves = [];
   switch (currentAxis) {
-    case 1:
+    case 0:
       allowedMoves.push(counter + adjuster);
       break;
     case totalAxis:

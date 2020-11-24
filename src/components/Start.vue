@@ -5,13 +5,13 @@
     <div class="d-flex input--position-size">
       <v-text-field
         class="pr-5"
-        label="Antal kolumner (minst 3)"
+        label="Antal kolumner"
         :value="columns"
         @change="(val) => validate(val, 'columns')"
       />
       <v-text-field
         class="pr-5"
-        label="Antal rader (minst 3)"
+        label="Antal rader"
         :value="rows"
         @change="(val) => validate(val, 'rows')"
       />
