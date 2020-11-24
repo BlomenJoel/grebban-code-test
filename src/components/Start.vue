@@ -31,17 +31,15 @@
       </div>
     </transition-group>
     <v-btn class="mt-5" @click="setPieces(columns * rows)">Shuffle</v-btn>
-    <transition name="pop-up">
-      <feedback
-        v-if="feedback"
-        :feedback="feedback"
-        @clicked-close="feedback = undefined"
-        @clicked-play-again="
-          feedback = undefined;
-          setPieces(columns * rows);
-        "
-      />
-    </transition>
+    <feedback
+      v-if="feedback"
+      :feedback="feedback"
+      @clicked-close="feedback = undefined"
+      @clicked-play-again="
+        feedback = undefined;
+        setPieces(columns * rows);
+      "
+    />
   </div>
 </template>
 
@@ -52,7 +50,7 @@
     checkWin,
     createPieces,
     shuffle,
-  } from "../service/initialPieces";
+  } from "../service/helpers";
   import Feedback from "./Game/Feedback.vue";
 
   export default {
@@ -83,6 +81,7 @@
       shuffle,
       validate(val, key) {
         const mobile = this.$vuetify.breakpoint.smAndDown;
+
         if (val > 15) {
           this.feedback = {
             title: "Invalid number of columns/rows",
